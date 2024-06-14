@@ -36,15 +36,35 @@ The Personal Finance Manager aims to:
 - Support effective financial planning, savings management, debt reduction, and wealth accumulation.
 - Enhance overall financial management by helping users track their financial health and achieve financial stability and security.
 
-## How to Use 📝
-1. Clone the repository to your local machine.
-2. Install the necessary dependencies for the backend and frontend.
-3. Configure database settings and API keys for third-party services.
-4. Run the application locally or deploy it to a hosting platform.
-5. Register an account, set up your financial data, and start managing your finances effectively.
+## Environment Setup
+- This application is built using Node.js and Express for the server-side logic.
+- MongoDB is used as the database, with interactions handled through Mongoose.
+- Body-parser is utilized for parsing JSON data, while bcryptjs is used for password hashing.
+- JSON Web Tokens (JWT) are used for user authentication and authorization.
 
-## Contribution Guidelines 🤝
-- Fork the repository and create a new branch for your contributions.
-- Follow the coding style and guidelines specified in the project.
-- Submit a pull request detailing the changes, improvements, or new features you've implemented.
-- Collaborate with other contributors to enhance the functionality and usability of the Personal Finance Manager.
+## Database Setup
+- Connect to MongoDB by running `mongoose.connect('mongodb://localhost/financeManager', { useNewUrlParser: true, useUnifiedTopology: true });`.
+- MongoDB schemas are defined for User, Income, Expense, and Budget to structure the data efficiently.
+
+## User Authentication Middleware
+- `authenticateUser` is a middleware function that checks for a valid JWT token in the request headers (`Authorization` header).
+- If the token is valid, it decodes the user ID from the token and attaches it to the request (`req.userId`).
+- This middleware protects routes that require authentication, ensuring only authenticated users access sensitive data.
+
+## Routes for User Authentication
+- `/api/register` handles user registration by hashing the password using bcrypt before saving it to the database.
+- `/api/login` handles user login, checking the email and password and generating a JWT token for authenticated users.
+
+## Routes for Managing Financial Data
+- `/api/income`, `/api/expense`, and `/api/budget` are protected routes requiring authentication (`authenticateUser` middleware).
+- These routes add income, expenses, and budgets to the database, associating them with the authenticated user.
+
+## JWT Token Generation
+- JWT tokens are generated during user login using `jwt.sign({ userId: user._id }, secretKey);`.
+- The token contains the user ID encrypted with a secret key, ensuring secure authentication for subsequent requests.
+
+## Starting the Server
+- Run the server on port 3000 using `app.listen(PORT, () => { ... });`.
+- Ensure MongoDB is running locally on the default port to establish the database connection.
+
+This README provides an overview of the application's setup, including authentication, database management, and routes for managing financial data. Follow these instructions to deploy and utilize the Personal Finance Manager effectively.
