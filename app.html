@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Finance Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Personal Finance Manager</h1>
+    <div id="registerForm">
+      <h2>Register</h2>
+      <form id="registerForm" action="/api/register" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Register">
+      </form>
+    </div>
+
+    <div id="loginForm">
+      <h2>Login</h2>
+      <form id="loginForm" action="/api/login" method="POST">
+        <label for="loginEmail">Email:</label>
+        <input type="text" id="loginEmail" name="email" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password" required>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+
+    <div id="incomeForm">
+      <h2>Add Income</h2>
+      <form id="incomeForm" action="/api/income" method="POST">
+        <label for="incomeAmount">Amount:</label>
+        <input type="text" id="incomeAmount" name="amount" required>
+        <label for="incomeCategory">Category:</label>
+        <select id="incomeCategory" name="category">
+          <option value="Salary">Salary</option>
+          <option value="Bonus">Bonus</option>
+          <option value="Freelance">Freelance</option>
+        </select>
+        <input type="submit" value="Add Income">
+      </form>
+    </div>
+
+    <div id="expenseForm">
+      <h2>Add Expense</h2>
+      <form id="expenseForm" action="/api/expense" method="POST">
+        <label for="expenseAmount">Amount:</label>
+        <input type="text" id="expenseAmount" name="amount" required>
+        <label for="expenseCategory">Category:</label>
+        <select id="expenseCategory" name="category">
+          <option value="Bills">Bills</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
+        <input type="submit" value="Add Expense">
+      </form>
+    </div>
+
+    <div id="budgetForm">
+      <h2>Add Budget</h2>
+      <form id="budgetForm" action="/api/budget" method="POST">
+        <label for="budgetCategory">Category:</label>
+        <select id="budgetCategory" name="category">
+          <option value="Bills">Bills</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
+        <label for="budgetAmount">Amount:</label>
+        <input type="text" id="budgetAmount" name="amount" required>
+        <input type="submit" value="Add Budget">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
